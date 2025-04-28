@@ -1,9 +1,7 @@
 name: IaC Security Scan Project 1
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   deploy-and-scan:
