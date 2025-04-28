@@ -7,10 +7,12 @@ resource "aws_instance" "mycopy_ec2" {
   ami           = "ami-08f78cb3cc8a4578e"
   instance_type = "t2.micro"
   key_name      = "mylowkey"
+    security_groups = [aws_security_group.mywebtraffic.name]
   
   tags = {
     Name = "MyEC2Instance66"
   }
+
 }
 
 resource "aws_eip" "mynewlb" {
@@ -46,8 +48,8 @@ dynamic "ingress" {
   # This is the variable that will be used to iterate over
     for_each = var.ingressrules
     content {
-      from_port   = ingress.value
-      to_port     = ingress.value
+      from_port   = port.value
+      to_port     = port.value
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
     }
@@ -57,8 +59,8 @@ dynamic "ingress" {
       # This is the variable that will be used to iterate over
         for_each = var.egressrules
         content {
-          from_port   = egress.value
-          to_port     = egress.value
+          from_port   = port.value
+          to_port     = port.value
           protocol    = "tcp"
           cidr_blocks = ["0.0.0.0/0"]
         } 

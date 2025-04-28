@@ -1,16 +1,12 @@
 
-name: AWS Automation Project 2
+name: AWS Automation Project 3
 
  
 
 on:
+  workflow_dispatch:
 
-  push:
-
-    branches:
-
-      - main
-
+ 
  
 
 jobs:
