@@ -1,5 +1,5 @@
 
-name: AWS Automation Project 3
+name: AWS Automation Project 4S
 
 on:
   workflow_dispatch:
