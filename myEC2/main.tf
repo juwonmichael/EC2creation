@@ -3,10 +3,20 @@ provider "aws" {
   region = "eu-west-2"
   
 }
+
+terraform {
+  backend "s3" {
+  bucket         = ""
+  dynamodb_table = ""
+  }
+}
+
+resource "aws_instance" "mycopy_ec2" {
+}
 resource "aws_instance" "mycopy_ec2" {
   ami           = "ami-08f78cb3cc8a4578e"
   instance_type = "t2.micro"
-  key_name      = "mylowkey"
+  key_name      = ""
     security_groups = [aws_security_group.mywebtraffic.name]
   
   tags = {
